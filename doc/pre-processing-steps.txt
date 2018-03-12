@@ -1,0 +1,27 @@
+Step-1:
+  Generate qhull files
+  Relevant scripts: generate_qhull_files.py and generate_qhull_file.py
+
+    # Works on many proteins; calls generate_qhull_file.py for
+    #  each protein in the given list
+    $ generate_qhull_files.py <list-of-pdb-files.txt> <list-of-orig-rank-files.txt>
+
+    # Works on a single protein; assumes a specific pdb format
+    $ generate_qhull_file.py pdb-file.pdb orig-rank-file.tcranks
+
+  The generate_qhull_file.py is not the perfect pdb parser. If it fails,
+  check the pdb file manually and adjust the array offsets within the
+  script.  Also, note that the scripts assume that the files are in
+  regular ASCII format. If not, run dos2unix on the files.
+
+Step-2:
+  Generate rank files
+  Relevant scripts: generate_rank_files.py
+
+    $ generate_rank_files.py <list-of-rank-files.txt>
+
+Step-3:
+  Generate sc files
+  Relevant scripts: generate_sc_files.py
+
+    $ generate_sc_files.py <list-of-pdb-files.txt>
