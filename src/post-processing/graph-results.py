@@ -42,11 +42,11 @@ for arg in sys.argv:
 
 matches = []
 
-def readMatches(file):
+def readMatches(filen):
   global verbose
   global matches
   parity = 0
-  for line in open(file):
+  for line in open(filen):
     if verbose:
       print line
     if line.startswith('#'):  # ignore as comment character
@@ -58,9 +58,8 @@ def readMatches(file):
     if parity in [0,2]:
       line = line[line.index('../input'):]
       assert(line.startswith('../input'))
-      match[parity/2] = line.split('/')[3].split(':')[0]
-      match[parity/2+3] = line.split('/')[2][1]
-      match[parity/2+3] = line.split('/')[2][1:]
+      match[parity/2] = line.split('/')[-1].split(':')[0]
+      match[parity/2+3] = line.split('/')[-2][1:]
       #assert(match[parity/2+3] in "12345678")
       if (match[parity/2+3] not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]):
         print line
