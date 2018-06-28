@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 
 # USAGE:
 # maxRankedResidue should normally agree with first parameter given to:
@@ -88,7 +88,7 @@ def readMatches(file):
       assert line.startswith('../input')
       match[parity/2] = line.split('/')[-1].split(':')[0]
       match[parity/2+3] = line.split('/')[-2][1:]
-      if (match[parity/2+3] not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]):
+      if (match[parity/2+3] not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]):
         print line
         print file
         assert(False)
@@ -386,7 +386,7 @@ def reorderCols(alignedRows, alignedProteinGroup):
       if needsReordering:
         break  # break out of "for col in ..."
 
-csvFile = open('multipleAlignmentOct07.csv', 'w')
+csvFile = open('multipleAlignment.csv', 'w')
 csvFile.write(',"Position of aligned residues",,,,,,,,,,,,,,,,,,,,,,,' + '\n')
 csvFile.write(
   '"PDB ID",' + ','.join(map(str, range(1,maxColsPerMergedGroup+1))) + '\n')
@@ -489,7 +489,7 @@ for g1 in sorted(maxMatch.keys()):
     print "  " + g1 + ":",
     for g2 in sorted(maxMatch[g1].keys()):
         if g1 == g2 and maxMatch[g1][g2] == 0:
-                print "{0:>3}".format('*'),
+            print "{0:>3}".format('*'),
         else:
-                print "{0:>3}".format(maxMatch[g1][g2]),
+            print "{0:>3}".format(maxMatch[g1][g2]),
     print ""

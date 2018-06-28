@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.7
 
 import sys
 
@@ -52,6 +52,8 @@ def readMatches(filen):
       if (match[parity/2+3] not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]):
         print line
         print filen
+        print linenum
+        print match[parity/2+3]
         assert(False)
       # Optionally change name to:  subgroup:protein
       match[parity/2] = match[parity/2+3] + ':' + match[parity/2]
